@@ -1,0 +1,13 @@
+{*{if count($links) > 1}*}
+<ol class="breadcrumb">
+    <li n:foreach="$links as $link" {if !$link['link']}class="active"{/if}>
+        <i class="{$link['icon']}" n:if="$link['icon']"></i>
+        {if $link['link']}
+            <a href="{plink $link['link'] (expand) $link['linkArgv']}" title="{$link['title']}">{$link['title']}</a>
+        {else}
+            {$link['title']}
+        {/if}
+        <i class="icon-angle-right" n:if="!$iterator->isLast()"></i>
+    </li>
+</ol>
+{*{/if}*}

@@ -1,0 +1,23 @@
+{if $paginator->pageCount > 1}
+<nav>
+    <ul class="pagination">
+        <li n:if="!$paginator->isFirst()">
+            <a n:href="this, page => $paginator->page-1" aria-label="Previous"><span aria-hidden="true">&laquo;</span> {_'Předchozí'}</a>
+        </li>
+
+    {foreach $steps as $step}
+        {if $step == $paginator->page}
+            <li class="active"><a n:href="this, page => $step">{$step}</a></li>
+        {elseif is_null($step)}
+            <li class="disabled"><a href="#">...</a></li>
+        {else}
+            <li><a n:href="this, page => $step">{$step}</a></li>
+        {/if}
+    {/foreach}
+
+        <li n:if="!$paginator->isLast()">
+            <a n:href="this, page => $paginator->page+1" aria-label="Next">{_'Další'} <span aria-hidden="true">&raquo;</span></a>
+        </li>
+    </ul>
+</nav>
+{/if}

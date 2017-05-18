@@ -1,0 +1,8 @@
+{block title}{control texts:title $ident}{/block}
+{*{block description}Popis stranky{/block}*}
+{block slug}{control texts:title $ident}{/block}
+
+{block content}
+    <h2>{control texts:title $ident}</h2>
+    {control texts:content $ident}
+{/block}

@@ -1,0 +1,25 @@
+<h1>{$localeClass}</h1>
+<div class="tracy-inner">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Plural</th>
+            <th>Main</th>
+        </tr>
+        </thead>
+        <tbody>
+        {ifset $locales}
+            <tr n:foreach="$locales as $locale" {if $locale['id']==$localeId}class="active"{/if}>
+                <td>{$locale['id']}</td>
+                <td>{$locale['code']}</td>
+                <td>{$locale['name']}</td>
+                <td>{$locale['plural']}</td>
+                <td>{ifset $locale['main']}{$locale['main']}{else}{$locale['id']==$localeIdDefault ? 1 : 0}{/ifset}</td>
+            </tr>
+        {/ifset}
+        </tbody>
+    </table>
+</div>

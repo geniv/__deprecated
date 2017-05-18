@@ -1,0 +1,49 @@
+{* bullshit od bootstrapu *}
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div id="nette-carousel-1" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li n:foreach="$banners as $banner" data-target="#nette-carousel-1" data-slide-to="{$iterator->counter - 1}" n:class="$iterator->first ? active"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div n:foreach="$banners as $banner" n:class="$iterator->first ? active, item">
+                    <a href="{$banner->Url}" n:tag-if="$banner->Url"><img src="{$presenter->context->parameters['banners']['pathToImage']}{$banner->Image}" alt="{$banner->Image}"></a>
+                    <div n:if="$banner->ShowText" class="carousel-caption">
+                        <h4>{$banner->Title}</h4>
+                        <p>{$banner->Text}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#nette-carousel-1" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#nette-carousel-1" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<br>
+
+{* slick *}
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2 wrap-slick-carousel">
+        <div class="slick-carousel">
+            <div n:foreach="$banners as $banner">
+                <a href="{$banner->Url}" n:tag-if="$banner->Url"><img src="{$presenter->context->parameters['banners']['pathToImage']}{$banner->Image}" alt="{$banner->Image}"></a>
+                <div n:if="$banner->ShowText" class="carousel-caption">
+                    <h4>{$banner->Title}</h4>
+                    <p>{$banner->Text}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{if $iterations==0}
+    žádný banner
+{/if}
