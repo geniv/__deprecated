@@ -1,0 +1,19 @@
+<h1>{$routerClass}</h1>
+<div class="tracy-inner">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Alias</th>
+            <th>Id item</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr n:foreach="$routes as $route">
+            <td>{$route->id}</td>
+            <td>{$route->alias}</td>
+            <td>{$route->id_item}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
