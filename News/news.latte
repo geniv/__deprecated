@@ -1,0 +1,8 @@
+{foreach $news as $item}
+    <a href="{plink News:detail, $item->Id}">detail</a> {$item->Title}, {$item->Description|noescape}, {$item->Added}
+    <br/>
+{/foreach}
+
+{if $iterations==0}
+    žádná novinka
+{/if}

@@ -1,0 +1,8 @@
+{foreach $gallery as $item}
+    <a href="{plink Gallery:detail, $item->Id}">detail</a> {$item->Name}, {$item->Description|noescape}, {$item->Added}
+    <br/>
+{/foreach}
+
+{if $iterations==0}
+    žádná galerie
+{/if}
