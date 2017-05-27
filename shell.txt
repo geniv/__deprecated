@@ -1,0 +1,18 @@
+# import db s progressem (pokud neni pv, je nutno doinstalovat)
+pv -t -p /path/to/sqlfile.sql | mysql -uUSERNAME -pPASSWORD -D DATABASE_NAME
+
+# klasicky import
+mysql -uUSERNAME -pPASSWORD -D DATABASE_NAME < /path/to/sqlfile.sql
+
+# import v ramci klienta mysql
+mysql -uuUSERNAME -pPASSWORD
+mysql> use mydb;
+mysql> source db_backup.sql;
+
+
+# zmereni velikost
+$ du -sch * 2>/dev/null 
+
+du -shx * 2>/dev/null 
+
+ncdu
