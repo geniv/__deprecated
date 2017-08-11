@@ -1,0 +1,18 @@
+<h1>Tracy clean</h1>
+<div class="tracy-inner">
+    <table>
+        <caption>Links</caption>
+        <tr n:ifset="$InternalTracyClean">
+            <td><a href="{$InternalTracyClean}">Clean nette cache</a></td>
+        </tr>
+        <tr n:foreach="$link as $title => $url">
+            {if is_array($url)}
+                <td>
+                    <a {ifset $url['target']}target="{$url['target']}"{/ifset} href="{ifset $url['url']}{$url['url']}{else}{link $url['link']}{/ifset}">{$title}</a>
+                </td>
+            {else}
+                <td><a href="{$url}">{$title}</a></td>
+            {/if}
+        </tr>
+    </table>
+</div>
