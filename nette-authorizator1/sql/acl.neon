@@ -1,0 +1,30 @@
+role:
+	moderator: Moderátor
+	admin: Adminstrator
+
+resource:
+	article: članky
+	comment: komenáře
+	poll: hlasování
+
+privilege:
+	show: zobrazit
+	insert: vložit
+	update: upravit
+	delete: smazat
+
+acl:
+	moderator:
+		article:
+			- show
+			- insert
+
+		poll:
+			- show
+			- insert
+			- update
+
+	admin:
+		article:
+			- all
+

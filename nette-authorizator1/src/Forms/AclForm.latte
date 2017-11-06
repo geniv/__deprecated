@@ -1,0 +1,13 @@
+<br>
+acl<br>
+<br>
+
+{if $idRole}
+    <a n:href="this">back</a>
+    <br>
+    {control form}
+{else}
+    {foreach $role as $item}
+        {$item['name']} <a n:href="Update! $item['id']">update</a><br>
+    {/foreach}
+{/if}

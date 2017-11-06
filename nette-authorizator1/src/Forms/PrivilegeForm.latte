@@ -1,0 +1,17 @@
+<br>
+privilege<br>
+<br>
+<a n:href="Add!">add privilege</a><br>
+
+{if $state=='add' || $state=='update'}
+    <a n:href="this">back</a>
+    <br>
+    {control form}
+{else}
+    list:<br>
+    {foreach $privilege as $item}
+        {$item['name']}
+        <a n:href="Update! $item['id']">update</a>
+        <a onclick="return confirm('Delete {$item['name']}?')" n:href="Delete! $item['id']">delete</a><br>
+    {/foreach}
+{/if}
