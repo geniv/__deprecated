@@ -1,0 +1,47 @@
+<ul>
+    <li><a href="{plink Homepage:}">Home</a></li>
+    <li>
+        <a n:ifset="$presenter['identityLogin']" n:href="identityLogin:Out!" n:confirm="'Really logout?'">logout</a>
+    </li>
+    <li><a href="{$baseUrl}/../">web</a></li>
+    <li>-- Administrace adminu:</li>
+    <li n:if="$user->isAllowed('ConfigureGroup', 'default')">
+        <a n:href="ConfigureGroup:" n:class="$presenter->isLinkCurrent('ConfigureGroup:*')?active">konfigurace skupin adminu</a>
+    </li>
+    <li n:if="$user->isAllowed('ConfigureSection', 'default')">
+        <a n:href="ConfigureSection:"  n:class="$presenter->isLinkCurrent('ConfigureSection:*')?active">konfigurace sekci adminu</a>
+    </li>
+    <li n:if="$user->isAllowed('ConfigureAcl', 'default')" >
+        <a n:href="ConfigureAcl:" n:class="$presenter->isLinkCurrent('ConfigureAcl:*')?active">konfigurace acl adminu</a>
+    </li>
+    <li n:if="$user->isAllowed('ConfigureTest', 'default')">
+        <a n:href="ConfigureTest:"  n:class="$presenter->isLinkCurrent('ConfigureTest:*')?active">konfigurační test</a>
+    </li>
+    <li>-- Administace obsahu:</li>
+</ul>
+
+{foreach $listMenuGroup as $groupItem}
+    {if count($listMenuItem($groupItem['id']))}
+        group: {$groupItem['name']}<br>
+        <ul>
+            <li n:foreach="$listMenuItem($groupItem['id']) as $item" n:if="$user->isAllowed($item['id'], 'default')">
+                <a n:href="$getMenuItemPresenter($item['type']).':' $item['id']" n:class="$item['link']['class'], $presenter->isLinkCurrent($getMenuItemPresenter($item['type']).':', $item['id'])?active">{$item['name']}</a>
+
+                <ul n:ifset="$item['subsection']">
+                    <li n:foreach="$item['subsection'] as $subitem">
+                        <a n:href="$getMenuItemPresenter($item['type']).':' $item['id'], $subitem['id']" n:class="$item['link']['class'], $presenter->isLinkCurrent($getMenuItemPresenter($item['type']).':', $item['id'], $subitem['id'])?active">{$subitem['name']}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    {/if}
+{/foreach}
+{if !$iterations}
+    ---
+{/if}
+
+<ul>
+    <li>XX - <a href="#">souborový system</a></li>
+    <li>XX - <a href="#">konfigurace webu</a></li>
+    <li>XX - <a href="#">konfigurace uživatelů</a></li>
+</ul>
